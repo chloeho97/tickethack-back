@@ -7,13 +7,15 @@ var express = require('express');
 
  // Ajouter un trajet au panier dès le click sur le bouton "Book" = reception des informations du front et ajout dans la collection "carts"
  
-router.post('/', (req,res) => {
+router.post('/addTripCart', (req,res) => {
+
+const { departure, arrival, date, price } = req.body;
 
  const newCart = new Cart({
-    departure : "",
-    arrival : "", 
-    date : "",
-    price : "", 
+    departure : departure,
+    arrival : arrival, 
+    date : date,
+    price : price, 
  });
 
  newCart.save().then(newTrajet => {
@@ -36,8 +38,8 @@ router.post('/', (req,res) => {
 
  
  // Supprimer un trajet ajouté au panier
- router.delete('/', (req, res) => {
- 
+ router.delete('/:trip', (req, res) => {
+   Cart.deleteOne({ })
  });
   
  module.exports = router;
