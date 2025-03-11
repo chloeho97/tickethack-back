@@ -16,7 +16,7 @@ var express = require('express');
      date: searchDate
    } = req.body;
  
-   const startOfDay = moment(searchDate).startOf('day').toDate();
+const startOfDay = moment(searchDate).startOf('day').toDate();
  const endOfDay = moment(searchDate).endOf('day').toDate();
  
  
@@ -30,6 +30,39 @@ var express = require('express');
    res.status(500).json({ error: err.message });
  });
  });
+
+
+
+// TEST
+
+const searchDeparture = document.querySelector('searchDeparture').value
+const searchArrival = document.querySelector('searchArrival').value
+const searchDate = document.querySelector('searchDate').value
+
+const userInput = {
+    arrival: searchArrival, 
+    departure: searchDeparture, 
+    date: searchDate
+}
+
+fetch('http://localhost:3000/search', {
+    method: 'POST',
+    headers : {'Content-Type':'application/json'},
+    body: JSON.stringify(userInput)
+})
+    .then(response => response.json())
+    .then(data => {
+        if (data && data["Trajets trouvés"].length > 0) {
+            window.location.assign('index.html');
+          } else {
+            console.log('Aucun trajet trouvé');
+          }
+})
+
+
+
+
+
  
  
  module.exports = router;

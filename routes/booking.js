@@ -1,13 +1,37 @@
 var express = require('express');
 var router = express.Router();
 
-const data = require('../trips')
+const Booking = require('../models/bookings'); 
+
 const moment = require('moment');
 
 
 
-// La page bookings affiche tous les trajets payés ainsi que le temps d’attente entre l’heure actuelle et celle du départ du trajet.
+ // Ajouter à la collection les trajets payés
+ router.post('/', (req,res) => {
+    
+    const newBooking = new Booking ({
+        departure : "",
+        arrival : "", 
+        date : "",
+        price : "", 
+     });
+    
+     newBooking.save().then(newTrajetPaid => {
+        res.json({newTrajetPaid})
+     })
 
-// Get tous les trajets payés
+ })
+ 
+ 
+  
+  // Voir tous les trajets payés
+  router.get('/', (req, res) => {
+   Booking.find().then(data => {
+     res.json({ "Trajets à venir" : data });
+ }).catch(err => {
+   res.status(500).json({ error: err.message });
+ });
+ });
 
 module.exports = router;
