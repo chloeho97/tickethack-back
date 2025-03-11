@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 require('./models/connection');
-/* const Trip = require('./models/trips');  */
+const Trip = require('./models/trips');
 
 var searchRouter = require('./routes/search')
 var cartRouter = require('./routes/cart')

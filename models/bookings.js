@@ -7,6 +7,6 @@ const mongoose = require('mongoose');
      price : Number, 
     });
     
-    const Booking = mongoose.model('bookings', BookingSchema);
+    const Booking = mongoose.model('bookings', bookingSchema);
     
     module.exports = Booking;
