@@ -30,6 +30,15 @@ const startOfDay = moment(searchDate).startOf('day').toDate();
  });
  });
  
+
+ router.get('/', (req, res) => {
+  Trip.find().then(data => {
+    res.json({ "Trajets ajoutés aux paniers" : data });
+}).catch(err => {
+  res.status(500).json({ error: err.message });
+});
+});
+
  
 
 

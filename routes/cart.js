@@ -27,9 +27,9 @@ const { departure, arrival, date, price } = req.body;
 
  
  // Voir les trajets ajoutés au panier
- router.get('/', (req, res) => {
+ router.get('/addTripCart', (req, res) => {
   Cart.find().then(data => {
-    res.json({ "Trajets ajoutés aux paniers" : data });
+    res.json({data });
 }).catch(err => {
   res.status(500).json({ error: err.message });
 });
