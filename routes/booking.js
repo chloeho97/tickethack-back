@@ -6,7 +6,7 @@ const Booking = require('../models/bookings');
 const moment = require('moment');
 
 // Ajouter à la collection les trajets payés
-router.post('/addTripBookings', (req,res) => {
+router.post('/purchase', (req,res) => {
 
    const newBooking = new Booking ({
       departure : "",
