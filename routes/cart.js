@@ -50,3 +50,16 @@ router.delete('/deleteTripCart', (req, res) => {
 });
 
 module.exports = router;
+
+
+// Récupérer le total des trajets présents dans le panier 
+
+router.get('/totalPrice', (req, res) => {
+   Cart.find().then(trips => {
+       const total = trips.reduce((sum, trip) => sum + trip.price, 0); // Calcule la somme des prix
+       res.json({ total });
+   })
+   .catch(err => {
+       res.status(500).json({ error: err.message });
+   });
+});
