@@ -41,7 +41,7 @@ router.post('/purchase', (req,res) => {
 // Afficher les trajets payés
 router.get('/', (req, res) => {
    Booking.find().then(data => {
-      res.json({ "Booked trips" : data });
+      res.json({data});
    }).catch(err => {
       res.status(500).json({ error: err.message });
    });
