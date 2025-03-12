@@ -38,8 +38,18 @@ const { departure, arrival, date, price } = req.body;
 
  
  // Supprimer un trajet ajouté au panier
- router.delete('/:trip', (req, res) => {
-   Cart.deleteOne({ })
+ router.delete('/deleteTripCart', (req, res) => {
+
+  const { departure, arrival, date, price } = req.body;
+
+   Cart.deleteOne({
+    departure : departure,
+    arrival : arrival, 
+    date : date,
+    price : price, 
+    })
+    .then(() => res.status(200).json({ message: 'Trajet supprimé avec succès' }))
+    .catch((err) => res.status(500).json({ error: 'Erreur lors de la suppression du trajet' }));
  });
   
  module.exports = router;
