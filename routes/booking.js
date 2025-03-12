@@ -16,12 +16,11 @@ router.post('/purchase', (req,res) => {
       // Puis pour chaque trajet du panier
       cartTrips.forEach(trip => {
          // Ajouter le trajet aux réservations
-         const { departure, arrival, date, price } = req.body;
          const newBooking = new Booking({
-         departure : departure,
-         arrival : arrival,
-         date : date,
-         price : price,
+         departure : trip.departure,
+         arrival : trip.arrival,
+         date : trip.date,
+         price : trip.price,
          });
          newBooking.save().then(newTrajetPaid => {
             res.json({newTrajetPaid})
