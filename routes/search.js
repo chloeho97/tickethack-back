@@ -9,6 +9,10 @@ const moment = require('moment');
 
 router.post('/', (req, res) => {
 
+  // Gestion de la casse
+  req.body.arrival = req.body.arrival[0].toUpperCase() + req.body.arrival.slice(1).toLowerCase();
+  req.body.departure = req.body.departure[0].toUpperCase() + req.body.departure.slice(1).toLowerCase();
+
   let { 
     arrival: searchArrival, 
     departure: searchDeparture, 

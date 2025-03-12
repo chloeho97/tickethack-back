@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
  
 const Cart = require('../models/carts'); 
-const moment = require('moment');
+//const moment = require('moment');
 
 
 // Ajouter un trajet au panier dès le click sur le bouton "Book" = reception des informations du front et ajout dans la collection "carts"
